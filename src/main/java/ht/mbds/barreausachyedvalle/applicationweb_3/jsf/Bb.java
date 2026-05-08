@@ -191,5 +191,7 @@ public class Bb implements Serializable {
 
         return this.listeRolesSysteme;
     }
-
+    public int getTotalTokens() {
+        return llmClient.getTotalTokens();
+    }
 }

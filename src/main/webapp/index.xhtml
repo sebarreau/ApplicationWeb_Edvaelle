@@ -47,6 +47,8 @@
                         <h:inputTextarea id="question" value="#{bb.question}" title="Question"
                                          cols="50" rows="5"/>
                         <h:commandButton value="Envoyer la question" action="#{bb.envoyer}"/>
+                        <h:outputText value="Tokens utilisés : #{bb.totalTokens}" />
+
                         <h:panelGroup>
                             <h:outputText value="Réponse :"/>
                             <button onclick="copyToClipboard('reponse')">Copier réponse</button>
@@ -64,7 +66,6 @@
                     <h:inputTextarea id="conversation" rows="30" cols="50" readonly="true"
                                      value="#{bb.conversation}" title="Conversation entière"/>
                 </h:panelGrid>
-
             </h:panelGrid>
         </h:form>
     </f:view>

@@ -15,6 +15,7 @@ public class LlmClient implements Serializable {
     private String systemRole;
     private Assistant assistant;
     private ChatMemory chatMemory;
+    private int totalTokens = 0;
 
     public LlmClient() {
         String apiKey = System.getenv("GEMINI_KEY");
@@ -41,7 +42,19 @@ public class LlmClient implements Serializable {
     public String envoyerQuestion(String role, String question) {
         if (role != null) {
             setSystemRole(role);
+            totalTokens += role.length() / 4;
         }
-        return assistant.chat(question);
+
+        totalTokens += question.length() / 4;
+
+        String reponse = assistant.chat(question);
+
+        totalTokens += reponse.length() / 4;
+
+        return reponse;
     }
+    public int getTotalTokens() {
+        return totalTokens;
+    }
+
 }
